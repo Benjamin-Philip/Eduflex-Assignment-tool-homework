@@ -12,11 +12,10 @@ setup(
     description = "",
     long_description = readfile("Readme.md"),
     author = "Benjamin J. Philip",
-    author_email = "benjamin.philip495@gmail.com"
-    license = None
-    entry_points{
+    author_email = "benjamin.philip495@gmail.com",
+    entry_points = {
         'console_scripts':[
-            "hw = Eduflex-Assignments-tool:__main__"
+            "hw = homework:__main__"
         ]
     }
 )
