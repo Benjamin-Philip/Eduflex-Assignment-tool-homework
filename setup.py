@@ -1,6 +1,6 @@
 from setuptools import setup
 
-filename = r"D:Benjamin/Documents/Code/Python/homework-project/Eduflex-Assignment-tool"
+filename = r"<enter path of the location of Eduflex-Assignments-tool here>"
 
 def readfile(filename):
     with open(filename, 'r+') as f:
