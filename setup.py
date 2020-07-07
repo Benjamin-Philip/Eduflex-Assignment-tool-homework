@@ -1,13 +1,13 @@
 from setuptools import setup
 
-filename = r"<enter path of the location of Eduflex-Assignments-tool here>"
+filename = r"<enter path of the location of homework.py here>"
 
 def readfile(filename):
     with open(filename, 'r+') as f:
         return f.read()
 
 setup(
-    name = "Eduflex-Assignmets-tool",
+    name = "homework",
     version = "2020.07.07",
     description = "",
     long_description = readfile("Readme.md"),
