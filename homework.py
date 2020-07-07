@@ -14,7 +14,7 @@ def scrape():
         print(" Done")
         print("Authenticating", end = (40 - len("Authenticating")) * ".")
         token = beautifulsoup_content.find("input", {"name":"_FOK"})["value"]
-        login_data = {"username":"Benjamin.Jacob","password":"Th3T3mp35t!", "_FOK":token}
+        login_data = {"username":"<enter your name here>","password":<"enter your password here>, "_FOK":token}
         s.post("https://eduflex.co.in/portal/?_proj=THEDEENS",login_data)
         assignments_tab = s.get("https://eduflex.co.in/portal/assignments.jsp")
         print(" Done")
@@ -142,9 +142,9 @@ def sort(extracted_homeworks):
 
 
 def make_sheets():
-    with ExcelWriter(r'D:/Benjamin/Studies/Homework-and-Assignments.xlsx',date_format = "DD-MM-YYYY") as writer:
+    with ExcelWriter("<enter your path and sheet here>",date_format = "DD-MM-YYYY") as writer:
 
-        print('Writing Homework-and-Assignments.xlsx', end = (40 - len('Writing Homework-and-Assignments.xlsx')) * ".")
+        print('Writing <enter filename here>.xlsx', end = (40 - len('Writing Homework-and-Assignments.xlsx')) * ".")
         active_sheet = pd.DataFrame()
         expired_sheet = pd.DataFrame()
         active_sheet.to_excel(writer, sheet_name = "ActiveSheet")
@@ -158,14 +158,14 @@ def add_assignments(homeworks):
     #Checking if File exixts.
 
     try:
-        pd.read_excel(r"D:/Benjamin/Studies/Homework-and-Assignments.xlsx")
+        pd.read_excel(r"<enter filename>")
     except FileNotFoundError:
         make_sheets()
     
     #Opening assignment sheet             
 
     print(f"Opening ActiveSheet", end = (40 - len(f"Opening ActiveSheet")) * ".")
-    active_sheet = pd.read_excel(r"D:/Benjamin/Studies/Homework-and-Assignments.xlsx",sheet_name = "ActiveSheet")
+    active_sheet = pd.read_excel(r"<enter Path here>", sheet_name = "ActiveSheet")
  
     print(" Done")
 
@@ -200,7 +200,7 @@ def check_for_expired_assignments(active_sheet):
     print("Checking for expired assignments", end = (40 - len("Checking for expired assignments")) * ".")
     today = pd.to_datetime("today")
     expired_assignments = list([])
-    expiredsheet = pd.read_excel(r"D:/Benjamin/Studies/Homework-and-Assignments.xlsx", sheet_name = "ExpiredSheet")
+    expiredsheet = pd.read_excel(r"<enter path here>", sheet_name = "ExpiredSheet")
 
     for i in range(len(active_sheet)):
         current_row_date = active_sheet.iloc[i].at["Due-Date"]
@@ -347,7 +347,7 @@ def change_status(active_sheet):
             print("Unrecognized choice")
     
     print("Updating Sheets", end = (40 - len("Updating Sheets")) * ".")
-    writer = ExcelWriter(r"D:/Benjamin/Studies/Homework-and-Assignments.xlsx", date_format = "DD-MM-YYYY")
+    writer = ExcelWriter(r"<enter path here>", date_format = "DD-MM-YYYY")
     active_sheet.set_axis([*range(len(active_sheet))], axis = 0, inplace = True)
     expiredsheet.set_axis([*range(len(expiredsheet))], axis = 0, inplace = True)
     active_sheet.to_excel(writer, sheet_name = "ActiveSheet")
